@@ -1,0 +1,118 @@
+# .gitignore for Vulkan Windows Desktop 3D Graphics Application
+
+# Build directories
+build/
+out/
+bin/
+lib/
+Debug/
+Release/
+x64/
+x86/
+Win32/
+MinSizeRel/
+RelWithDebInfo/
+install/
+.vs/
+.vscode/
+
+# CMake generated files
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+cmake_install.cmake
+compile_commands.json
+CTestTestfile.cmake
+_deps/
+*.cmake
+!CMakeLists.txt
+
+# Visual Studio files
+*.sdf
+*.opensdf
+*.suo
+*.pdb
+*.ilk
+*.user
+*.userosscache
+*.sln.docstates
+*.VC.db
+*.VC.VC.opendb
+*.VC.opendb
+ipch/
+.vs/
+*.tmp
+*.log
+*.vspscc
+*.vssscc
+*.pidb
+*.svclog
+*.cache
+
+# Compiled shader files (keep .spv if versioning compiled shaders)
+#*.spv
+shader_cache/
+
+# Vulkan validation layers
+vk_layer_settings.txt
+
+# C++ specific
+*.obj
+*.o
+*.a
+*.lib
+*.so
+*.dll
+*.dylib
+*.exe
+*.out
+*.app
+*.gch
+*.pch
+
+# Windows specific
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msm
+*.msp
+*.lnk
+
+# 3D modeling software temp files
+*.blend1
+*.blend2
+*.blend3
+*.blend4
+*.3ds.import
+*.fbx.import
+*.obj.import
+*.max.import
+*.mb.import
+*.ma.import
+*.c4d.import
+
+# Project specific
+assets/textures/cache/
+assets/models/cache/
+assets/shaders/cache/
+imgui.ini
+
+# Logs and databases
+*.log
+*.sqlite
+*.sqlite3
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Dependencies and package managers
+vcpkg_installed/
+packages/
+vendor/
