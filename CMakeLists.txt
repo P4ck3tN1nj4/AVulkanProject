@@ -3,6 +3,7 @@ project(VulkanEngine)
 
 find_package(Vulkan REQUIRED)
 
+include(cmake/Shaders.cmake)
 include(FetchContent)
 
 FetchContent_Declare(
@@ -13,6 +14,16 @@ FetchContent_Declare(
 )
 
 FetchContent_MakeAvailable(glm)
+
+FetchContent_Declare(
+	spdlog
+	GIT_REPOSITORY "https://github.com/gabime/spdlog.git"
+	GIT_TAG "v1.12.0"
+	GIT_SHALLOW TRUE
+)
+
+FetchContent_MakeAvailable(spdlog)
+
 
 FetchContent_Declare(
 	glfw
@@ -43,6 +54,7 @@ target_link_libraries(VulkanEngine PRIVATE Vulkan::Vulkan)
 target_link_libraries(VulkanEngine PRIVATE glm)
 target_link_libraries(VulkanEngine PRIVATE glfw)
 target_link_libraries(VulkanEngine PRIVATE Microsoft.GSL::GSL)
+target_link_libraries(VulkanEngine PRIVATE spdlog)
 
 target_include_directories(VulkanEngine PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/src")
 
@@ -50,3 +62,12 @@ target_compile_features(VulkanEngine PRIVATE cxx_std_20)
 
 target_precompile_headers(VulkanEngine PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/src/precomp.h")
 
+file(GLOB_RECURSE ShaderSources CONFIGURE_DEPENDS
+	"${CMAKE_CURRENT_SOURCE_DIR}/shaders/*.vert"
+	"${CMAKE_CURRENT_SOURCE_DIR}/shaders/*.frag"
+)
+
+add_shaders(VulkanEngineShaders ${ShaderSources})
+add_dependencies(VulkanEngine VulkanEngineShaders)
+
+file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/paving-stones.jpg" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}")
